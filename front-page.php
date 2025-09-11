@@ -85,9 +85,7 @@
           <div class="car-card">
             <div class="car-card__header">
               <h3><?php the_title(); ?></h3>
-              <span class="car-type">
-                <?php echo get_field('car_type'); ?>
-              </span>
+              <span class="car-type"><?php echo get_field('car_type'); ?></span>
               <button class="favorite-btn" data-id="<?php the_ID(); ?>">
                 <i class="far fa-heart"></i>
               </button>
@@ -98,24 +96,24 @@
             </div>
 
             <div class="car-card__specs">
-              <span><i class="fas fa-gas-pump"></i> <?php the_field('fuel_capacity'); ?>L</span>
-              <span><i class="fas fa-cog"></i> <?php the_field('transmission'); ?></span>
-              <span><i class="fas fa-user"></i> <?php the_field('passengers'); ?> People</span>
+              <span><i class="fas fa-gas-pump"></i> <?php echo get_post_meta(get_the_ID(), '_car_fuel', true); ?> L</span>
+              <span><i class="fas fa-cogs"></i> <?php echo get_post_meta(get_the_ID(), '_car_gear', true); ?></span>
+              <span><i class="fas fa-user-friends"></i> <?php echo get_post_meta(get_the_ID(), '_car_seats', true); ?> People</span>
             </div>
 
             <div class="car-card__footer">
               <div class="car-card__price">
-                <strong>$<?php the_field('price'); ?>.00</strong><span>/day</span>
+                <strong>$<?php the_field('price'); ?><?php echo get_post_meta(get_the_ID(), '_car_price', true); ?></strong><span>/day</span>
               </div>
               <button class="btn btn-primary rent-btn" data-id="<?php the_ID(); ?>">
                 Rent Now
               </button>
             </div>
           </div>
-    </div>
-<?php endwhile;
+      <?php endwhile;
         wp_reset_postdata();
       endif; ?>
+    </div>
   </div>
 </section>
 

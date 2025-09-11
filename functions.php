@@ -126,11 +126,70 @@ function morent_register_cars_cpt()
         'menu_icon'     => 'dashicons-car',
         'supports'      => ['title', 'editor', 'thumbnail'],
         'rewrite'       => ['slug' => 'cars'],
+        'post_type'      => 'cars',
+        'posts_per_page' => 8,
+        'orderby'        => 'date',
+        'order'          => 'ASC'
     ];
 
     register_post_type('cars', $args);
 }
 add_action('init', 'morent_register_cars_cpt');
+
+// Car Cards
+
+function morent_add_car_meta_box()
+{
+    add_meta_box(
+        'car_details',
+        'Car Details',
+        'morent_render_car_meta_box',
+        'cars',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'morent_add_car_meta_box');
+
+function morent_render_car_meta_box($post)
+{
+    $price = get_post_meta($post->ID, '_car_price', true);
+    $fuel = get_post_meta($post->ID, '_car_fuel', true);
+    $gear = get_post_meta($post->ID, '_car_gear', true);
+    $seats = get_post_meta($post->ID, '_car_seats', true);
+?>
+    <p>
+        <label>Price:</label>
+        <input type="text" name="car_price" value="<?php echo esc_attr($price); ?>" />
+    </p>
+    <p>
+        <label>Fuel Capacity:</label>
+        <input type="text" name="car_fuel" value="<?php echo esc_attr($fuel); ?>" />
+    </p>
+    <p>
+        <label>Transmission:</label>
+        <input type="text" name="car_gear" value="<?php echo esc_attr($gear); ?>" />
+    </p>
+    <p>
+        <label>Seats:</label>
+        <input type="number" name="car_seats" value="<?php echo esc_attr($seats); ?>" />
+    </p>
+<?php
+}
+
+function morent_save_car_meta($post_id)
+{
+    if (array_key_exists('car_fuel', $_POST)) {
+        update_post_meta($post_id, '_car_fuel', sanitize_text_field($_POST['car_fuel']));
+    }
+    if (array_key_exists('car_gear', $_POST)) {
+        update_post_meta($post_id, '_car_gear', sanitize_text_field($_POST['car_gear']));
+    }
+    if (array_key_exists('car_seats', $_POST)) {
+        update_post_meta($post_id, '_car_seats', intval($_POST['car_seats']));
+    }
+}
+add_action('save_post', 'morent_save_car_meta');
 
 // Font Awesome
 
