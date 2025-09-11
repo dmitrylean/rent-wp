@@ -103,7 +103,9 @@
 
             <div class="car-card__footer">
               <div class="car-card__price">
-                <strong>$<?php the_field('price'); ?><?php echo get_post_meta(get_the_ID(), '_car_price', true); ?></strong><span>/day</span>
+                <strong>$<?php the_field('car_price'); ?><?php echo get_post_meta(get_the_ID(), '_car_price', true);
+                if ($price) {
+                  echo '$' . number_format($price, 2);} ?></strong><span>/day</span>
               </div>
               <button class="btn btn-primary rent-btn" data-id="<?php the_ID(); ?>">
                 Rent Now

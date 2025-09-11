@@ -153,7 +153,7 @@ add_action('add_meta_boxes', 'morent_add_car_meta_box');
 
 function morent_render_car_meta_box($post)
 {
-    $price = get_post_meta($post->ID, '_car_price', true);
+    $price = get_post_meta($post->ID, '_car_price', true, intval($_POST['car_price']));
     $fuel = get_post_meta($post->ID, '_car_fuel', true);
     $gear = get_post_meta($post->ID, '_car_gear', true);
     $seats = get_post_meta($post->ID, '_car_seats', true);
@@ -179,6 +179,9 @@ function morent_render_car_meta_box($post)
 
 function morent_save_car_meta($post_id)
 {
+    if (array_key_exists('car_price', $_POST)) {
+        update_post_meta($post_id, '_car_price', sanitize_text_field($_POST['car_price']));
+    }
     if (array_key_exists('car_fuel', $_POST)) {
         update_post_meta($post_id, '_car_fuel', sanitize_text_field($_POST['car_fuel']));
     }
