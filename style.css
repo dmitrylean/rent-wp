@@ -139,7 +139,7 @@ h1, h2, h3, p {
 .filter__group {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 /* Footer */
@@ -167,17 +167,23 @@ h1, h2, h3, p {
 }
 
 .footer-menu h4 {
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 12px;
 }
 
 .footer-menu .menu {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .footer-menu .menu li {
+  text-decoration: none;
+  color: black;
+
   margin-bottom: 6px;
 }
 
@@ -213,7 +219,7 @@ h1, h2, h3, p {
   justify-content: space-between;
   transition: 0.3s;
   width: 304px;
-  height: 388px;
+  height: auto;
 }
 
 .car-card:hover {
@@ -227,7 +233,7 @@ h1, h2, h3, p {
 }
 
 .car-type {
-  font-size: 14px;
+  font-size: 20px;
   color: #6b7280;
 }
 
@@ -236,7 +242,7 @@ h1, h2, h3, p {
   border: none;
   cursor: pointer;
   color: #999;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .favorite-btn.active {
@@ -244,8 +250,12 @@ h1, h2, h3, p {
 }
 
 .car-card__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin: 12px 0;
+  margin: 50px 0;
+  height: 120px;
 }
 
 .car-card__specs {
@@ -259,12 +269,13 @@ h1, h2, h3, p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .car-card__price {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
+  color: black;
 }
 
 .btn-primary {
@@ -274,7 +285,8 @@ h1, h2, h3, p {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-}
+  width: 116px;
+  height: 44px;
 
 /* PopUp */
 

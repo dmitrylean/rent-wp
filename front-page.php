@@ -25,6 +25,7 @@
       <form action="<?php echo site_url('/cars'); ?>" method="get">
 
         <div class="filter__group">
+          <div class="filter_left">
           <label>
             <input type="radio" name="type" value="pickup" checked> Pick - Up
           </label>
@@ -43,7 +44,7 @@
 
         <button type="button" class="filter__swap">⇅</button>
 
-        <div class="filter__group">
+        <div class="filter_right">
           <label>
             <input type="radio" name="type" value="dropoff"> Drop - Off
           </label>
@@ -57,6 +58,7 @@
           </select>
           <input type="date" name="dropoff_date">
           <input type="time" name="dropoff_time">
+        </div>
         </div>
 
         <button type="submit" class="btn btn-primary">Search Car</button>
@@ -120,13 +122,5 @@
 </section>
 
 <!-- Other Sections -->
-
-<!-- Forms -->
-<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-  <input type="hidden" name="action" value="custom_form_submit">
-  <input type="text" name="username" placeholder="Ваше имя">
-  <input type="email" name="email" placeholder="Ваш Email">
-  <button type="submit">Отправить</button>
-</form>
 
 <?php get_footer(); ?>

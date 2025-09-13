@@ -52,7 +52,7 @@
 <?php wp_footer(); ?>
 <script src="./assets/js/popup-item.js"></script>
 </body>
-<div id="rentModal" class="modal hidden">
+<!-- <div id="rentModal" class="modal hidden">
   <div class="modal-content">
     <button class="modal-close">×</button>
     <h2>Rent this car</h2>
@@ -67,6 +67,6 @@
       <button type="submit" class="btn btn-primary">Confirm Booking</button>
     </form>
   </div>
-</div>
+</div> -->
 
 </html>
